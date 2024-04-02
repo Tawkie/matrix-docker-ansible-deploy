@@ -3905,6 +3905,8 @@ matrix_synapse_container_additional_networks: |
       ([exim_relay_container_network] if (exim_relay_enabled and matrix_synapse_email_enabled and matrix_synapse_email_smtp_host == exim_relay_identifier and matrix_synapse_container_network != exim_relay_container_network) else [])
       +
       ([matrix_ma1sd_container_network] if (matrix_ma1sd_enabled and matrix_synapse_account_threepid_delegates_msisdn == matrix_synapse_account_threepid_delegates_msisdn_mas1sd_url and matrix_synapse_container_network != matrix_ma1sd_container_network) else [])
+      +
+      ([tawkie_matrix_signup_overlay_network] if tawkie_matrix_signup_overlay_enabled else [])
     ) | unique
   }}
 
@@ -4060,6 +4062,8 @@ matrix_synapse_reverse_proxy_companion_container_additional_networks: |
       ([matrix_prometheus_nginxlog_exporter_container_network] if (matrix_prometheus_nginxlog_exporter_enabled and matrix_prometheus_nginxlog_exporter_container_network != matrix_synapse_reverse_proxy_companion_container_network) else [])
       +
       ([] if matrix_homeserver_container_network in ['', matrix_synapse_reverse_proxy_companion_container_network] else [matrix_homeserver_container_network])
+      #+
+      #([tawkie_matrix_signup_overlay_network] if tawkie_matrix_signup_overlay_enabled else [])
     ) | unique
   }}
 

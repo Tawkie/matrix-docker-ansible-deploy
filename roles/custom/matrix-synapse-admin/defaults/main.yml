@@ -12,7 +12,7 @@ matrix_synapse_admin_container_image_self_build: false
 matrix_synapse_admin_container_image_self_build_repo: "https://github.com/Awesome-Technologies/synapse-admin.git"
 
 # renovate: datasource=docker depName=awesometechnologies/synapse-admin
-matrix_synapse_admin_version: 0.8.7
+matrix_synapse_admin_version: 0.10.1
 matrix_synapse_admin_docker_image: "{{ matrix_synapse_admin_docker_image_name_prefix }}awesometechnologies/synapse-admin:{{ matrix_synapse_admin_version }}"
 matrix_synapse_admin_docker_image_name_prefix: "{{ 'localhost/' if matrix_synapse_admin_container_image_self_build else matrix_container_global_registry_prefix }}"
 matrix_synapse_admin_docker_image_force_pull: "{{ matrix_synapse_admin_docker_image.endswith(':latest') }}"
@@ -73,7 +73,7 @@ matrix_synapse_admin_container_labels_traefik_additional_response_headers_custom
 matrix_synapse_admin_container_labels_additional_labels: ''
 
 # List of systemd services that matrix-synapse-admin.service depends on
-matrix_synapse_admin_systemd_required_services_list: ['docker.service']
+matrix_synapse_admin_systemd_required_services_list: "{{ [devture_systemd_docker_base_docker_service_name] if devture_systemd_docker_base_docker_service_name else [] }}"
 
 # List of systemd services that matrix-synapse-admin.service wants
 matrix_synapse_admin_systemd_wanted_services_list: []

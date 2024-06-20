@@ -6,20 +6,18 @@ Since this bridge component can bridge to both [Messenger](https://messenger.com
 
 This documentation page only deals with the bridge's ability to bridge to Instagram. For bridging to Facebook/Messenger, see [Setting up Messenger bridging via Mautrix Meta](configuring-playbook-bridge-mautrix-meta-messenger.md).
 
-
 ## Migrating from the old mautrix-instagram bridge
 
 If you've been using the [mautrix-instagram](./configuring-playbook-bridge-mautrix-instagram.md) bridge, **you'd better get rid of it first** or the 2 bridges will be in conflict:
 
-- both trying to use `@instagrambot:YOUR_DOMAIN` as their username. This conflict may be resolved by adjusting `matrix_mautrix_instagram_appservice_bot_username` or `matrix_mautrix_meta_instagram_appservice_username`
-- both trying to bridge the same DMs
+-   both trying to use `@instagrambot:YOUR_DOMAIN` as their username. This conflict may be resolved by adjusting `matrix_mautrix_instagram_appservice_bot_username` or `matrix_mautrix_meta_instagram_appservice_username`
+-   both trying to bridge the same DMs
 
 To do so, send a `clean-rooms` command to the management room with the old bridge bot (`@instagrambot:YOUR_DOMAIN`).
 
 This would give you a list of portals and groups of portals you may purge. Proceed with sending commands like `clean recommended`, etc.
 
 Then, consider disabling the old bridge in your configuration, so it won't recreate the portals when you receive new messages.
-
 
 ## Configuration
 
@@ -37,18 +35,19 @@ By default, any user on your homeserver will be able to use the bridge.
 
 Different levels of permission can be granted to users:
 
-- `relay` - Allowed to be relayed through the bridge, no access to commands
-- `user` - Use the bridge with puppeting
-- `admin` - Use and administer the bridge
+-   `relay` - Allowed to be relayed through the bridge, no access to commands
+-   `user` - Use the bridge with puppeting
+-   `admin` - Use and administer the bridge
 
 The permissions are following the sequence: nothing < `relay` < `user` < `admin`.
 
 The default permissions are set via `matrix_mautrix_meta_instagram_bridge_permissions_default` and are somewhat like this:
+
 ```yaml
 matrix_mautrix_meta_instagram_bridge_permissions_default:
-  '*': relay
-  YOUR_DOMAIN: user
-  '{{ matrix_admin }}': admin
+    "*": relay
+    YOUR_DOMAIN: user
+    "{{ matrix_admin }}": admin
 ```
 
 If you don't define the `matrix_admin` in your configuration (e.g. `matrix_admin: @user:YOUR_DOMAIN`), then there's no admin by default.
@@ -56,8 +55,8 @@ If you don't define the `matrix_admin` in your configuration (e.g. `matrix_admin
 You may redefine `matrix_mautrix_meta_instagram_bridge_permissions_default` any way you see fit, or add extra permissions using `matrix_mautrix_meta_instagram_bridge_permissions_custom` like this:
 
 ```yaml
-matrix_mautrix_meta_instagram_bridge_permissions_custom: |
-  '@YOUR_USERNAME:YOUR_DOMAIN': admin
+matrix_mautrix_meta_instagram_bridge_permissions_custom:
+    "@YOUR_USERNAME:YOUR_DOMAIN": admin
 ```
 
 You may wish to look at `roles/custom/matrix-bridge-mautrix-meta-instagram/templates/config.yaml.j2` to find more information on the permissions settings and other options you would like to configure.
@@ -78,12 +77,11 @@ This is the recommended way of setting up Double Puppeting, as it's easier to ac
 
 When using this method, **each user** that wishes to enable Double Puppeting needs to follow the following steps:
 
-- retrieve a Matrix access token for yourself. Refer to the documentation on [how to do that](obtaining-access-tokens.md).
+-   retrieve a Matrix access token for yourself. Refer to the documentation on [how to do that](obtaining-access-tokens.md).
 
-- send the access token to the bot. Example: `login-matrix MATRIX_ACCESS_TOKEN_HERE`
+-   send the access token to the bot. Example: `login-matrix MATRIX_ACCESS_TOKEN_HERE`
 
-- make sure you don't log out the session for which you obtained an access token some time in the future, as that would break the Double Puppeting feature
-
+-   make sure you don't log out the session for which you obtained an access token some time in the future, as that would break the Double Puppeting feature
 
 ## Usage
 

@@ -126,6 +126,7 @@
     - custom/matrix-coturn
     - custom/matrix-media-repo
     - custom/matrix-pantalaimon
+    - custom/matrix-admin-wireguard
 
     - role: galaxy/postgres_backup
 

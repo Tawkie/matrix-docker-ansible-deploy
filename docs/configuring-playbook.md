@@ -42,6 +42,8 @@ When you're done with all the configuration you'd like to do, continue with [Ins
 
 - [Enabling metrics and graphs (Prometheus, Grafana) for your Matrix server](configuring-playbook-prometheus-grafana.md) (optional)
 
+- [Enabling synapse-usage-exporter for Synapse usage statistics](configuring-playbook-synapse-usage-exporter.md) (optional)
+
 ### Core service adjustments
 
 - Homeserver configuration:
@@ -224,3 +226,5 @@ When you're done with all the configuration you'd like to do, continue with [Ins
 - [Setting up a Cactus Comments server](configuring-playbook-cactus-comments.md) - a federated comment system built on Matrix (optional)
 
 - [Setting up the Rageshake bug report server](configuring-playbook-rageshake.md) (optional)
+
+- [Setting up Prometheus Alertmanager integration via matrix-alertmanager-receiver](configuring-playbook-alertmanager-receiver.md) (optional)

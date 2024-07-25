@@ -4,7 +4,7 @@ PrivateKey = {{ tawkie_wireguard_admin_conf_interface_private_key }}
 
 [Peer]
 PublicKey = {{ tawkie_wireguard_admin_conf_peer_public_key }}
-AllowedIPs = {{ tawkie_wireguard_admin_conf_peer_ip }}/24
+AllowedIPs = {{ tawkie_wireguard_admin_conf_peer_ip }}
 Endpoint = {{ tawkie_wireguard_admin_conf_peer_endpoint }}
 # Without keep-alive the transverse server can't reach the matrix server
 PersistentKeepalive = 10

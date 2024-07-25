@@ -1,0 +1,20 @@
+# Tawkie admin VPN setup
+# Allows us to access Grafana via Wireguard VPN
+matrix_admin_wireguard_enabled: false
+
+# This server's IP address over the VPN. Example : 10.0.0.20
+tawkie_wireguard_admin_conf_interface_ip: "10.0.0.20"
+
+# This server's Wireguard private key. Required.
+# See https://www.wireguard.com/quickstart/
+# interface public key :
+tawkie_wireguard_admin_conf_interface_private_key: ""
+
+# Remote server's IP address (or address range) in CIDR notation. Example : 10.0.0.0/24
+tawkie_wireguard_admin_conf_peer_ip: "10.0.0.1/32"
+
+# Remote server's public IP address / port combination.
+tawkie_wireguard_admin_conf_peer_endpoint: "152.228.170.105:51820"
+
+# Remote server's Wireguard public key.
+tawkie_wireguard_admin_conf_peer_public_key: ""

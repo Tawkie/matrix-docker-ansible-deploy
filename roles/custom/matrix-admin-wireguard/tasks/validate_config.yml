@@ -1,0 +1,11 @@
+---
+- name: Fail if required matrix-admin-wireguard variables are undefined
+  ansible.builtin.fail:
+    msg: "The `{{ item }}` variable must be defined and have a non-null value."
+  with_items:
+    - "tawkie_wireguard_admin_conf_interface_ip"
+    - "tawkie_wireguard_admin_conf_interface_private_key"
+    - "tawkie_wireguard_admin_conf_peer_ip"
+    - "tawkie_wireguard_admin_conf_peer_endpoint"
+    - "tawkie_wireguard_admin_conf_peer_public_key"
+  when: "vars[item] == '' or vars[item] is none"

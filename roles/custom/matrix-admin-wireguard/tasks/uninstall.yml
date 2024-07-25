@@ -5,6 +5,7 @@
     name: "wg-quick@wg0"
     state: stopped
     enabled: false
+  failed_when: false
 
 - name: Remove WireGuard Configuration File
   ansible.builtin.file:

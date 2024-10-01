@@ -898,6 +898,8 @@ matrix_beeper_linkedin_container_additional_networks_auto: |-
       ([] if matrix_addons_homeserver_container_network == '' else [matrix_addons_homeserver_container_network])
       +
       ([devture_postgres_container_network] if (devture_postgres_enabled and matrix_beeper_linkedin_database_hostname == devture_postgres_connection_hostname and matrix_beeper_linkedin_container_network != devture_postgres_container_network) else [])
+      +
+      ([tawkie_matrix_signup_overlay_network] if tawkie_matrix_signup_overlay_enabled else [])
     ) | unique
   }}
 
@@ -1482,6 +1484,8 @@ matrix_mautrix_meta_messenger_container_additional_networks_auto: |-
       ([devture_postgres_container_network] if (devture_postgres_enabled and matrix_mautrix_meta_messenger_database_hostname == devture_postgres_connection_hostname and matrix_mautrix_meta_messenger_container_network != devture_postgres_container_network) else [])
       +
       ([matrix_playbook_reverse_proxyable_services_additional_network] if (matrix_playbook_reverse_proxyable_services_additional_network and matrix_mautrix_meta_messenger_container_labels_traefik_enabled) else [])
+      +
+      ([tawkie_matrix_signup_overlay_network] if tawkie_matrix_signup_overlay_enabled else [])
     ) | unique
   }}
 
@@ -1556,6 +1560,8 @@ matrix_mautrix_meta_instagram_container_additional_networks_auto: |-
       ([devture_postgres_container_network] if (devture_postgres_enabled and matrix_mautrix_meta_instagram_database_hostname == devture_postgres_connection_hostname and matrix_mautrix_meta_instagram_container_network != devture_postgres_container_network) else [])
       +
       ([matrix_playbook_reverse_proxyable_services_additional_network] if (matrix_playbook_reverse_proxyable_services_additional_network and matrix_mautrix_meta_instagram_container_labels_traefik_enabled) else [])
+      +
+      ([tawkie_matrix_signup_overlay_network] if tawkie_matrix_signup_overlay_enabled else [])
     ) | unique
   }}
 
@@ -1948,6 +1954,8 @@ matrix_mautrix_whatsapp_container_additional_networks_auto: |-
       ([devture_postgres_container_network] if devture_postgres_enabled and matrix_mautrix_whatsapp_database_hostname == devture_postgres_connection_hostname else [])
       +
       ([matrix_playbook_reverse_proxyable_services_additional_network] if matrix_playbook_reverse_proxyable_services_additional_network and matrix_mautrix_whatsapp_container_labels_traefik_enabled else [])
+      +
+      ([tawkie_matrix_signup_overlay_network] if tawkie_matrix_signup_overlay_enabled else [])
     ) | unique
   }}
 
